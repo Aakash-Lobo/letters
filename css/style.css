@@ -1482,3 +1482,75 @@ left:32px;
             rotate(10deg);
     }
 }
+
+.desk-letter{
+
+    position:absolute;
+
+    left:50%;
+    top:330px;
+
+    transform:
+        translateX(-50%)
+        rotate(-8deg);
+
+    width:110px;
+    height:70px;
+
+    background:#f7ead2;
+
+    border-radius:4px;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    z-index:200;
+
+    transition:.4s;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.25);
+}
+
+.envelope-flap{
+
+    position:absolute;
+
+    inset:0;
+
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        50% 58%
+    );
+
+    background:#efe0bb;
+}
+
+.recipient{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    font-size:13px;
+
+    color:#7c4a2b;
+
+    font-family:'Cormorant Garamond',serif;
+}
+
+.desk-letter:hover{
+
+    transform:
+        translateX(-50%)
+        rotate(-8deg)
+        translateY(-4px);
+
+}

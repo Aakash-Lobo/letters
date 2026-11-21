@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>A Little Letter For You</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 35px 16px;
+        overflow-x: hidden;
+
+        background:
+          radial-gradient(circle at 15% 20%, #fce3e6 0, transparent 35%),
+          radial-gradient(circle at 85% 80%, #e9c8c9 0, transparent 35%),
+          linear-gradient(135deg, #f9e9e5, #f4dadd, #f8e9df);
+
+        position: relative;
+      }
+
+      /* Soft decorative background */
+
+      body::before {
+        content: "♡";
+        position: fixed;
+        top: 8%;
+        left: 9%;
+        font-size: 90px;
+        color: rgba(174, 105, 117, 0.12);
+        transform: rotate(-20deg);
+      }
+
+      body::after {
+        content: "♡";
+        position: fixed;
+        bottom: 8%;
+        right: 9%;
+        font-size: 110px;
+        color: rgba(174, 105, 117, 0.12);
+        transform: rotate(18deg);
+      }
+
+      /* Floating hearts */
+
+      .heart {
+        position: fixed;
+        color: rgba(174, 91, 112, 0.25);
+        animation: float 7s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      .heart:nth-child(1) {
+        top: 15%;
+        right: 17%;
+        font-size: 23px;
+      }
+
+      .heart:nth-child(2) {
+        bottom: 18%;
+        left: 14%;
+        font-size: 17px;
+        animation-delay: 2s;
+      }
+
+      .heart:nth-child(3) {
+        top: 70%;
+        right: 12%;
+        font-size: 28px;
+        animation-delay: 3s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-15px) rotate(12deg);
+        }
+      }
+
+      /* Letter container */
+
+      .note {
+        width: 100%;
+        max-width: 570px;
+        position: relative;
+        filter: drop-shadow(0 18px 25px rgba(91, 51, 47, 0.2));
+        animation: appear 1.4s ease forwards;
+      }
+
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Paper */
+
+      .note_content {
+        position: relative;
+        width: 100%;
+        min-height: 620px;
+        padding: 65px 55px;
+
+        background:
+          linear-gradient(rgba(255, 250, 237, 0.91), rgba(250, 239, 218, 0.94)),
+          url("https://cdn.pixabay.com/photo/2016/10/23/15/47/paper-1763262_1280.png")
+            center / cover;
+
+        border: 1px solid rgba(166, 127, 94, 0.3);
+        border-radius: 3px 5px 4px 2px;
+
+        box-shadow:
+          inset 0 0 35px rgba(139, 103, 71, 0.09),
+          inset 0 0 5px rgba(139, 103, 71, 0.1);
+
+        transform: rotate(-1deg);
+      }
+
+      /* Paper texture details */
+
+      .note_content::before {
+        content: "";
+        position: absolute;
+        inset: 12px;
+        border: 1px solid rgba(172, 130, 99, 0.19);
+        pointer-events: none;
+      }
+
+      .note_content::after {
+        content: "♡";
+        position: absolute;
+        bottom: 25px;
+        right: 30px;
+        font-size: 42px;
+        color: rgba(174, 91, 112, 0.38);
+        transform: rotate(12deg);
+      }
+
+      /* Letter writing */
+
+      .note_content p {
+        position: relative;
+        z-index: 1;
+
+        font-family: "Reenie Beanie", cursive;
+        font-size: clamp(2rem, 6vw, 3rem);
+        line-height: 1.15;
+        color: #59423b;
+      }
+
+      /* Small heading */
+
+      .letter-date {
+        text-align: right;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 16px;
+        font-style: italic;
+        color: #a17a70;
+        margin-bottom: 40px;
+      }
+
+      /* Decorative divider */
+
+      .divider {
+        color: #bc8585;
+        font-size: 21px;
+        text-align: center;
+        margin: 35px 0;
+        letter-spacing: 10px;
+      }
+
+      /* Signature */
+
+      .signature {
+        margin-top: 45px;
+        text-align: right;
+        font-family: "Reenie Beanie", cursive;
+        font-size: 35px;
+        color: #8e565b;
+      }
+
+      /* Small footer */
+
+      .footer {
+        margin-top: 20px;
+        text-align: center;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 13px;
+        font-style: italic;
+        letter-spacing: 2px;
+        color: #a77d78;
+      }
+
+      /* Mobile optimisation */
+
+      @media (max-width: 600px) {
+        body {
+          padding: 25px 17px;
+        }
+
+        .note {
+          max-width: 100%;
+        }
+
+        .note_content {
+          min-height: 570px;
+          padding: 48px 28px;
+          transform: rotate(-0.5deg);
+        }
+
+        .note_content::before {
+          inset: 9px;
+        }
+
+        .note_content p {
+          font-size: clamp(2rem, 9vw, 2.7rem);
+          line-height: 1.18;
+          padding: 0 5px;
+        }
+
+        .letter-date {
+          font-size: 14px;
+          margin-bottom: 35px;
+        }
+
+        .signature {
+          font-size: 32px;
+        }
+
+        .footer {
+          font-size: 12px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .note_content {
+          padding: 42px 22px;
+          min-height: 520px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="heart">♡</div>
+    <div class="heart">♡</div>
+    <div class="heart">♡</div>
+
+    <div class="note">
+      <div class="note_content">
+        <div class="letter-date">A little something, just for you</div>
+
+        <p>
+          My love ❤️,<br /><br />
+
+          Words cannot describe what I feel for you...
+          <br /><br />
+
+          It's funny, isn't it? Out of all the people in this world, somehow our
+          paths crossed on an app called Slowly. We exchanged just one letter,
+          and little did I know that this one little interaction would
+          eventually lead me to someone who would become such a big part of my
+          life. I never imagined that the person on the other side of that first
+          letter would one day become the girl I'd fall in love with.
+
+          <br /><br />
+
+          When I first met you, I had no idea where any of this would lead. I
+          didn't know that your little stories, your random thoughts, your silly
+          moments and even the smallest details about your day would eventually
+          become some of my favourite things. I certainly didn't expect someone
+          I met through a screen to become someone I would hold so close to my
+          heart.
+
+          <br /><br />
+
+          Somewhere along the way, you became so much more than someone I had
+          met on an app. You became the person I wanted to tell everything to,
+          the person whose happiness matters so much to me, and someone I
+          genuinely cannot imagine my days without. From that first letter to
+          all our conversations on WhatsApp, I'm so glad we kept getting to know
+          each other.
+
+          <br /><br />
+
+          I wish I could explain just how much you mean to me, but I don't think
+          words will ever quite do it justice. I love the person you are, the
+          little things that make you who you are, your way of looking at life,
+          and even the things you might not always see in yourself. I want to be
+          there for your happiest moments, your difficult days, your little
+          victories and all the ordinary days in between. Not just when
+          everything is going well, but through all the messy bits too.
+
+          <br /><br />
+
+          And if there's one thing I'm especially grateful for, it's that I get
+          to call you my girlfriend now. How lucky am I that the girl I once
+          exchanged a letter with is now the girl I get to love? I honestly
+          couldn't have asked for a more beautiful outcome to what started as
+          such a simple little interaction.
+
+          <br /><br />
+
+          I'm choosing you, Mansi, today and every day that follows. I'm
+          choosing to love you, to learn more about you, to celebrate your
+          little victories and to be right beside you through every chapter of
+          life. I want to experience new things with you, laugh at the silliest
+          things, make countless memories and keep finding new reasons to fall
+          in love with you. I want to give you a love that you never have to
+          question, one that you can feel in the smallest things I do. You're
+          the girl I want to share all these little moments with, and I'm so
+          happy that it's you. ❤️
+          <br /><br />
+
+          Thank you for finding your way into my life, Mansi. I don't know what
+          I did to deserve you, but I'm really, really glad our paths crossed.
+          You have brought so much happiness into my life, and I hope I can give
+          you even a fraction of the happiness you've brought into mine.
+
+          <br /><br />
+
+          Here's to our first letter as something more than two people who
+          happened to meet on Slowly, and to a lifetime of little moments,
+          memories, laughter and love. And perhaps, a thousand more letters from
+          me to you. ❤️
+        </p>
+
+        <div class="divider">~ ♡ ~</div>
+
+        <div class="signature">
+          I love you ❤️ <br />
+          Always yours,<br />
+          Aakash 🍀
+        </div>
+
+        <!-- <div class="footer">written with love, always</div> -->
+      </div>
+    </div>
+  </body>
+</html>

@@ -23,6 +23,8 @@ button.addEventListener('click', () => {
 
         fallingLetter.classList.add('fade-letter');
 
+        deskLetter.style.opacity = "1";
+
     }, 3500);
 
     setTimeout(() => {
@@ -39,5 +41,14 @@ button.addEventListener('click', () => {
         roofDove.style.display = "block";
 
     }, 6500);
+
+});
+
+const deskLetter =
+document.querySelector(".desk-letter");
+
+deskLetter.addEventListener("click", () => {
+
+    window.location.href = "letter.html";
 
 });
