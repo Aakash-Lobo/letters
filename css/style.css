@@ -1,0 +1,1484 @@
+/* ===================================
+   RESET
+=================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    background:#1b110b;
+    font-family:'Cormorant Garamond',serif;
+}
+
+.scene{
+    position:relative;
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #6b4130 0%,
+        #533123 35%,
+        #2b1a13 100%
+    );
+
+    overflow:hidden;
+}
+
+/* ===================================
+   WINDOW WRAPPER
+=================================== */
+
+.window-wrapper{
+    position:relative;
+    width:min(88vw,600px);
+    margin:40px auto 0;
+}
+
+.window{
+    width:100%;
+    height:min(60vh,420px);
+}
+
+
+
+
+/* ===================================
+   CURTAINS
+=================================== */
+
+.curtain{
+    position:absolute;
+    top:0;
+    height:100%;
+    width:90px;
+    z-index:30;
+    pointer-events:none;
+}
+
+.curtain.left{
+    left:-55px;
+}
+
+.curtain.right{
+    right:-55px;
+}
+
+.fabric{
+    position:absolute;
+    inset:0;
+
+    border-radius:0 0 18px 18px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #5b0f1f 0%,
+        #7c2033 10%,
+        #c85a6a 25%,
+        #9c3040 40%,
+        #5e1322 55%,
+        #b94a5c 75%,
+        #751f30 90%,
+        #4a0d1a 100%
+    );
+
+    box-shadow:
+        inset 8px 0 12px rgba(255,255,255,.12),
+        inset -15px 0 18px rgba(0,0,0,.4);
+}
+
+/* Tieback rope */
+
+.rope{
+    position:absolute;
+
+    top:52%;
+    transform:translateY(-50%);
+
+    width:65px;
+    height:4px;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #ffd77a,
+        #d79e3c
+    );
+
+    border-radius:999px;
+
+    z-index:100;
+}
+
+.left .rope{
+    right:25px;
+}
+
+.right .rope{
+    left:25px;
+}
+
+
+
+/* Create pulled-back shape */
+
+.left .fabric{
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        80% 45%,
+        72% 52%,
+        80% 58%,
+        100% 100%,
+        0 100%
+    );
+}
+
+.right .fabric{
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        0 100%,
+        20% 58%,
+        28% 52%,
+        20% 45%
+    );
+}
+
+
+/* ===================================
+   WINDOW
+=================================== */
+
+.window{
+    position:relative;
+
+    width:100%;
+    height:min(60vh,420px);
+
+    border:10px solid #b97a44;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35);
+}
+
+.sky{
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #17245f,
+        #5362c0,
+        #ae7abd
+    );
+}
+
+.window::before{
+    content:"";
+
+    position:absolute;
+    top:0;
+    left:50%;
+
+    width:8px;
+    height:100%;
+
+    background:#b97a44;
+
+    transform:translateX(-50%);
+    z-index:5;
+}
+
+.window::after{
+    content:"";
+
+    position:absolute;
+    left:0;
+    top:50%;
+
+    width:100%;
+    height:8px;
+
+    background:#b97a44;
+
+    transform:translateY(-50%);
+    z-index:5;
+}
+
+/* ===================================
+   MOON
+=================================== */
+
+.moon{
+    position:absolute;
+
+    top:40px;
+    right:50px;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:#fff2c8;
+
+    box-shadow:
+        0 0 20px #fff5c4,
+        0 0 40px #fff5c4;
+}
+
+.moon::after{
+    content:"";
+
+    position:absolute;
+
+    left:12px;
+    top:-2px;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:#4957af;
+}
+
+.moonlight{
+    position:absolute;
+
+    top:-20px;
+    right:75px;
+
+    width:120px;
+    height:130%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255,255,255,.25),
+            transparent
+        );
+
+    transform:rotate(12deg);
+}
+
+/* ===================================
+   STARS
+=================================== */
+
+.star{
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    background:white;
+
+    border-radius:50%;
+
+    box-shadow:0 0 8px white;
+}
+
+.s1{top:45px;left:50px;}
+.s2{top:80px;left:110px;}
+.s3{top:60px;left:190px;}
+.s4{top:130px;left:70px;}
+.s5{top:110px;left:250px;}
+.s6{top:70px;left:330px;}
+.s7{top:170px;left:160px;}
+.s8{top:40px;left:290px;}
+
+/* ===================================
+   HILL
+=================================== */
+
+.hill{
+    position:absolute;
+
+    bottom:60px;
+    left:-10%;
+
+    width:120%;
+    height:110px;
+
+    background:#1d275d;
+
+    border-radius:50% 50% 0 0;
+}
+
+/* ===================================
+   COTTAGE HOUSE
+=================================== */
+
+.house{
+    position:absolute;
+
+    left:22%;
+    bottom:108px;
+
+    width:22px;
+    height:16px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff4b6,
+            #ffe178
+        );
+
+    box-shadow:
+        0 0 10px #ffe178,
+        0 0 20px rgba(255,225,120,.7);
+
+    z-index:4;
+}
+
+/* Roof */
+
+.roof{
+    position:absolute;
+
+    left:-3px;
+    top:-10px;
+
+    width:0;
+    height:0;
+
+    border-left:14px solid transparent;
+    border-right:14px solid transparent;
+    border-bottom:12px solid #33458f;
+}
+
+/* Chimney */
+
+.chimney{
+    position:absolute;
+
+    right:2px;
+    top:-8px;
+
+    width:4px;
+    height:7px;
+
+    background:#5b3a28;
+}
+
+/* Window */
+
+.window-light{
+    position:absolute;
+
+    left:8px;
+    top:5px;
+
+    width:6px;
+    height:6px;
+
+    background:#fffef0;
+
+    box-shadow:
+        0 0 4px white;
+}
+
+.dove{
+    position:absolute;
+
+    left:8px;
+    top:-18px;
+
+    font-size:18px;
+
+    animation:doveFlap 0.6s ease-in-out infinite;
+
+    transform-origin:center center;
+
+    filter:
+        drop-shadow(0 0 4px rgba(255,255,255,.6));
+}
+
+@keyframes doveFlap{
+
+    0%,100%{
+        transform:
+            rotate(-8deg)
+            translateY(0px)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            rotate(8deg)
+            translateY(-2px)
+            scale(1.08);
+    }
+}
+
+@keyframes doveFlap{
+
+    0%,100%{
+        transform:
+            rotate(-6deg)
+            translateY(0px);
+    }
+
+    25%{
+        transform:
+            rotate(6deg)
+            translateY(-2px);
+    }
+
+    50%{
+        transform:
+            rotate(-3deg)
+            translateY(-4px);
+    }
+
+    75%{
+        transform:
+            rotate(6deg)
+            translateY(-2px);
+    }
+}
+
+/* ===================================
+   SHELF
+=================================== */
+
+.shelf{
+    height:24px;
+    width:100%;
+
+    background:#8a5936;
+}
+
+/* ===================================
+   CANDLE
+=================================== */
+
+.candle{
+    
+    position:absolute;
+
+    left:210px;
+    top:45.5%;
+
+    width:28px;
+    height:55px;
+
+    z-index:35;
+}
+
+/* Flame */
+
+.flame{
+    position:absolute;
+
+    left:28px;
+    top:-14px;
+
+    width:12px;
+    height:18px;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #fff8b3,
+            #ffcb42 60%,
+            #ff8c00 100%
+        );
+
+    border-radius:50% 50% 50% 50%;
+
+    transform:rotate(-8deg);
+
+    box-shadow:
+        0 0 12px #ffcb42,
+        0 0 25px rgba(255,200,50,.8);
+}
+
+/* Glow */
+
+.flame::before{
+    content:"";
+
+    position:absolute;
+
+    width:36px;
+    height:36px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:rgba(255,220,120,.18);
+
+    filter:blur(8px);
+}
+
+/* Wick */
+
+.flame::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-4px;
+    left:50%;
+
+    width:2px;
+    height:5px;
+
+    background:#342013;
+
+    transform:translateX(-50%);
+}
+
+/* Candle Body */
+
+.wax{
+    position:absolute;
+
+    left:29px;
+    top:0;
+
+    width:12px;
+    height:40px;
+
+    background:
+        linear-gradient(
+            to right,
+            #e7d7af,
+            #fff8dd 50%,
+            #d6c18d
+        );
+
+    border-radius:4px;
+
+    box-shadow:
+        inset -2px 0 3px rgba(0,0,0,.08);
+}
+
+/* Melted wax */
+.wax::before{
+    content:"";
+
+    position:absolute;
+
+    left:2px;
+    top:0;
+
+    width:3px;
+    height:10px;
+
+    background:#fff3ce;
+
+    border-radius:0 0 4px 4px;
+}
+
+.wax::after{
+    content:"";
+
+    position:absolute;
+
+    right:2px;
+    top:0;
+
+    width:2px;
+    height:6px;
+
+    background:#fff3ce;
+
+    border-radius:0 0 3px 3px;
+}
+/* ===================================
+   CANDLE HOLDER
+=================================== */
+
+.candle-holder{
+    position:absolute;
+
+    left:25px;
+    top:34px;
+
+    width:20px;
+    height:10px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffde95,
+            #ba8730
+        );
+
+    border-radius:50%;
+
+    z-index:1;
+
+    box-shadow:
+        0 2px 4px rgba(0,0,0,.15);
+}
+
+/* Cup where candle sits */
+
+.candle-holder::before{
+    content:"";
+
+    position:absolute;
+
+    left:8px;
+    top:8px;
+
+    width:4px;
+    height:8px;
+
+    background:#a77625;
+
+    border-radius:2px;
+}
+
+/* Stem */
+.candle-holder::after{
+    content:"";
+
+    position:absolute;
+
+    left:-4px;
+    top:12px;
+
+    width:28px;
+    height:6px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #e5c373,
+            #9b6b22
+        );
+
+    border-radius:50%;
+}
+
+/* ===================================
+   QUILL & INK
+=================================== */
+
+.quill-area{
+    position:absolute;
+
+    right:5%;
+    top:48%;
+
+    width:85px;
+    height:70px;
+}
+
+/* Feather */
+
+.quill-feather{
+    position:absolute;
+
+    right:-5px;
+    top:0;
+    z-index:2;
+
+    width:34px;
+    height:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f7f3ed 40%,
+            #e7ded3 100%
+        );
+
+    border-radius:100% 10% 100% 10%;
+
+    transform:rotate(-48deg);
+
+    box-shadow:
+        inset -2px -1px 3px rgba(0,0,0,.08),
+        0 1px 2px rgba(0,0,0,.05);
+}
+
+/* Main vein */
+
+.quill-feather::before{
+    content:"";
+
+    position:absolute;
+
+    left:4px;
+    top:50%;
+
+    width:28px;
+    height:1px;
+
+    background:#c8beb2;
+
+    transform:
+        translateY(-50%)
+        rotate(-10deg);
+}
+
+/* Shaft */
+
+.quill-shaft{
+    position:absolute;
+
+    right:23px;
+    top:12px;
+
+    width:3px;
+    height:40px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #cfaa73,
+            #9f7445
+        );
+
+    border-radius:2px;
+
+    transform:rotate(28deg);
+
+    box-shadow:
+        0 0 2px rgba(0,0,0,.15);
+}
+
+/* Gold ferrule */
+
+.quill-shaft::before{
+    content:"";
+
+    position:absolute;
+
+    top:-4px;
+    left:-3px;
+
+    width:9px;
+    height:6px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffe8a6,
+            #d9b25a
+        );
+
+    border-radius:4px;
+}
+
+/* Ink bottle */
+
+.ink{
+    position:absolute;
+
+    right:15px;
+    bottom:0;
+
+    width:30px;
+    height:26px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #264fc1 0%,
+            #16358a 70%,
+            #10245f 100%
+        );
+
+    border-radius:5px 5px 8px 8px;
+
+    box-shadow:
+        inset 4px 0 4px rgba(255,255,255,.12),
+        inset -4px 0 4px rgba(0,0,0,.15),
+        0 2px 6px rgba(0,0,0,.2);
+}
+
+.ink::before{
+    content:"";
+
+    position:absolute;
+
+    top:-4px;
+    left:6px;
+
+    width:18px;
+    height:6px;
+
+    background:#282c40;
+
+    border-radius:2px 2px 0 0;
+}
+
+/* ==========================
+   PHOTO FRAME
+========================== */
+
+.photo-frame{
+    position:absolute;
+
+    left:10px;
+    bottom:330px; 
+
+    width:75px;
+    height:55px;
+left:32px;
+    transform:rotate(-4deg);
+
+    z-index:4;
+}
+
+/* Stand */
+
+.frame-stand{
+    position:absolute;
+
+    width:16px;
+    height:3px;
+
+    background:#6f4529;
+
+    left:-6px;
+    bottom:10px;
+
+    transform:rotate(-45deg);
+
+    border-radius:2px;
+
+    z-index:1;
+}
+
+/* Frame */
+
+.photo{
+    position:absolute;
+
+    inset:0;
+
+    z-index:2;
+
+    background:#9c6c43;
+
+    border-top:4px solid #d7b084;
+    border-left:4px solid #d7b084;
+    border-right:4px solid #744b2d;
+    border-bottom:4px solid #5d3923;
+
+    box-shadow:
+        6px 6px 14px rgba(0,0,0,.25);
+}
+
+/* Picture */
+
+.photo::before{
+    content:"";
+
+    position:absolute;
+
+    top:6px;
+    left:6px;
+    right:6px;
+    bottom:6px;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #9cc0e5,
+        #f0e1c9
+    );
+
+    border:1px solid rgba(255,255,255,.35);
+}
+
+/* Glass reflection */
+
+.photo::after{
+    content:"";
+
+    position:absolute;
+
+    top:6px;
+    left:10px;
+
+    width:12px;
+    height:calc(100% - 12px);
+
+    background:rgba(255,255,255,.18);
+
+    transform:skewX(-20deg);
+}
+
+
+/* ===================================
+   CHILI PLANT
+=================================== */
+
+.chili-plant{
+    position:absolute;
+
+    left:250px;
+    top:295px;
+
+    width:70px;
+    height:100px;
+
+    z-index:20;
+}
+
+/* Pot */
+
+.pot{
+    position:absolute;
+
+    bottom:0;
+    left:12px;
+
+    width:40px;
+    height:30px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #c97a48,
+            #9b592f
+        );
+
+    border-radius:6px 6px 10px 10px;
+
+    box-shadow:
+        inset 0 -4px 4px rgba(0,0,0,.15),
+        0 3px 6px rgba(0,0,0,.15);
+}
+
+.pot::before{
+    content:"";
+
+    position:absolute;
+
+    top:-4px;
+    left:-2px;
+
+    width:44px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #dd9365,
+            #a05b30
+        );
+}
+
+/* Stem */
+
+.stem{
+    position:absolute;
+
+    left:31px;
+    bottom:22px;
+
+    width:4px;
+    height:58px;
+    z-index:-1;
+
+    background:
+        linear-gradient(
+            to right,
+            #2f9d49,
+            #53c46a
+        );
+
+    border-radius:4px;
+}
+
+/* Leaves */
+
+.leaf{
+    position:absolute;
+
+    width:18px;
+    height:10px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5edc72,
+            #2f9d49
+        );
+
+    border-radius:100% 0 100% 0;
+}
+
+.leaf1{
+    left:16px;
+    bottom:60px;
+    transform:rotate(-35deg);
+}
+
+.leaf2{
+    left:34px;
+    bottom:55px;
+    transform:rotate(35deg);
+}
+
+.leaf3{
+    left:18px;
+    bottom:42px;
+    transform:rotate(-20deg);
+}
+
+.leaf4{
+    left:36px;
+    bottom:37px;
+    transform:rotate(20deg);
+}
+
+/* Chilis */
+
+.chili{
+    position:absolute;
+
+    width:7px;
+    height:20px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ff5f5f,
+            #c71822
+        );
+
+    box-shadow:
+        0 0 4px rgba(255,80,80,.2);
+}
+
+.chili1{
+    left:20px;
+    bottom:65px;
+
+    transform:rotate(-25deg);
+}
+
+.chili2{
+    left:42px;
+    bottom:58px;
+
+    transform:rotate(18deg);
+}
+
+.chili3{
+    left:29px;
+    bottom:76px;
+
+    transform:rotate(-10deg);
+}
+
+/* ===================================
+   CONTENT
+=================================== */
+
+.content{
+    text-align:center;
+    /* color:rgb(70, 68, 68); */
+     color:#f2dfc1;
+
+    padding-top:80px;
+}
+
+.content h1{
+    font-family:'Caveat',cursive;
+    font-size:clamp(3rem,7vw,4.5rem);
+}
+
+.content p{
+    margin-top:10px;
+
+    color:#f2dfc1;
+
+    font-size:clamp(1.15rem,2vw,1.7rem);
+}
+
+/* ===================================
+   BUTTON
+=================================== */
+
+.open-btn{
+    margin-top:40px;
+
+    padding:18px 55px;
+
+    border:none;
+    border-radius:14px;
+
+    cursor:pointer;
+
+    color:#5b3600;
+
+    font-weight:bold;
+    letter-spacing:2px;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #ffe17d,
+        #d99c27
+    );
+
+    box-shadow:
+        0 0 25px rgba(255,191,0,.45),
+        inset 0 2px 8px rgba(255,255,255,.5);
+
+    transition:.3s;
+}
+
+.open-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* ===================================
+   MOBILE
+=================================== */
+
+@media (max-width:768px){
+
+    .window-wrapper{
+        width:92vw;
+    }
+
+    .window{
+        height:42vh;
+    }
+
+      .curtain{
+        width:55px;
+    }
+
+    .curtain.left{
+        left:-20px;
+    }
+
+    .curtain.right{
+        right:-20px;
+    }
+
+    .rope{
+        width:65px;
+    }
+
+    .left .rope{
+    right:15px;
+}
+
+.right .rope{
+    left:15px;
+}
+
+    .content{
+        padding-top:60px;
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .open-btn{
+        width:85%;
+        max-width:300px;
+        padding:16px;
+    }
+
+    .candle{
+        left:4%;
+    }
+
+    .quill-area{
+        right:4%;
+    }
+}
+
+/* ============================
+   DESKTOP ONLY
+============================ */
+
+@media (min-width: 1200px){
+
+    .window-wrapper{
+        transform:scale(1.15);
+        transform-origin:top center;
+        margin-top:50px;
+    }
+
+    /* Props stay close to window */
+
+    .photo-frame{
+        left:calc(50% - 360px);
+        bottom:250px;
+    }
+
+    .candle{
+        left:calc(50% - 215px);
+        top:43%;
+    }
+
+    .chili-plant{
+        left:calc(50% + 130px);
+        top:430px;
+    }
+
+    .quill-area{
+        left:calc(50% + 310px);
+        right:auto;
+        top:48%;
+    }
+
+    .content{
+        padding-top:40px;
+    }
+}
+
+/* ==========================
+   FLYING DOVE
+========================== */
+.flying-dove{
+    position:absolute;
+
+    left:180px;
+    top:180px;
+
+    font-size:40px;
+
+    opacity:0;
+
+    z-index:999;
+
+    pointer-events:none;
+}
+
+/* Letter carried by bird */
+
+.bird-letter{
+    position:absolute;
+
+    right:40px;
+    top:15px;
+
+    font-size:18px;
+
+    transform:rotate(12deg);
+
+    transition:opacity .3s ease;
+}
+
+.falling-letter{
+    position:absolute;
+
+    left:50%;
+    top:260px;
+
+    transform:translateX(-50%);
+
+    font-size:40px;
+
+    opacity:0;
+
+    z-index:998;
+}
+
+.fly{
+    animation:doveFly 4s forwards;
+}
+
+.drop{
+    animation:letterDrop 1.5s forwards;
+}
+
+.fade-letter{
+    animation:letterFade 1s forwards;
+}
+
+.fly-in{
+    animation:doveFlyIn 2s forwards;
+}
+
+.fly-out{
+    animation:doveFlyOut 2.2s forwards;
+}
+
+/* ==========================
+   LETTER
+========================== */
+
+.falling-letter{
+    position:absolute;
+
+    left:50%;
+    top:300px;
+
+    transform:translateX(-50%);
+
+    font-size:40px;
+
+    opacity:0;
+
+    z-index:999;
+}
+
+/* Bird flight */
+
+.fly{
+    animation:doveFly 3s ease-in-out forwards;
+}
+
+
+@keyframes doveFlyIn{
+
+    0%{
+        opacity:1;
+
+        transform:
+            translate(-350px,-120px)
+            scale(.7)
+            rotate(-10deg);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+}
+
+@keyframes doveFlyOut{
+
+    0%{
+        opacity:1;
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            translate(-380px,-220px)
+            scale(.7)
+            rotate(-15deg);
+    }
+}
+
+/* Letter drop */
+
+.drop{
+    animation:letterDrop 1.8s ease forwards;
+}
+
+@keyframes doveFly{
+
+    0%{
+        opacity:1;
+        transform:
+            translate(0,0)
+            scale(.8);
+    }
+
+    50%{
+        opacity:1;
+        transform:
+            translate(150px,90px)
+            scale(1);
+    }
+
+    100%{
+        opacity:1;
+        transform:
+            translate(350px,250px)
+            scale(1.1);
+    }
+}
+
+@keyframes letterDrop{
+
+    0%{
+        opacity:1;
+
+        transform:
+            translateX(-50%)
+            translateY(0)
+            rotate(0deg);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            translateX(-50%)
+            translateY(130px)
+            rotate(15deg);
+    }
+}
+
+.fade-letter{
+    animation:fadeLetter 1s forwards;
+}
+
+@keyframes fadeLetter{
+
+    from{
+        opacity:1;
+    }
+
+    to{
+        opacity:0;
+    }
+}
+
+@keyframes letterFade{
+
+    from{
+        opacity:1;
+    }
+
+    to{
+        opacity:0;
+    }
+}
+
+@keyframes letterDrop{
+
+    0%{
+        opacity:1;
+        transform:
+            translate(-50%,0)
+            rotate(0deg);
+    }
+
+    100%{
+        opacity:1;
+        transform:
+            translate(-50%,130px)
+            rotate(10deg);
+    }
+}
